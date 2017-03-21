@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>paSh.xcscheme</key>
+		<key>BiaoPan.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B854CAA1BBA2D2E00DE68A8</key>
+		<key>2B8FC7D11E6656020046597A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B854CC01BBA2D2E00DE68A8</key>
+		<key>2B8FC7EA1E6656030046597A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B854CCB1BBA2D2E00DE68A8</key>
+		<key>2B8FC7F51E6656030046597A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

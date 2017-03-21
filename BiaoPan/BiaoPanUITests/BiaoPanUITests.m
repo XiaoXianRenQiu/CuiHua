@@ -1,18 +1,18 @@
 //
-//  paShUITests.m
-//  paShUITests
+//  BiaoPanUITests.m
+//  BiaoPanUITests
 //
-//  Created by 劉鵬飛 on 2015/9/29.
-//  Copyright © 2015年 劉鵬飛. All rights reserved.
+//  Created by 劉鵬飛 on 2017/3/1.
+//  Copyright © 2017年 劉鵬飛. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface paShUITests : XCTestCase
+@interface BiaoPanUITests : XCTestCase
 
 @end
 
-@implementation paShUITests
+@implementation BiaoPanUITests
 
 - (void)setUp {
     [super setUp];
