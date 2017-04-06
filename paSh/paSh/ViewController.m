@@ -11,6 +11,8 @@
 @implementation ViewController{
 
     NSMutableString *dataString;//邮箱字符串
+    NSMutableDictionary *urlDictionary;
+    double mainWidth,mainHeight;
 }
 
 - (void)viewDidAppear{
@@ -27,13 +29,14 @@
     //点击左上角x号时的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWindoCloss) name:NSWindowWillCloseNotification object:nil];
     
-    
     //本视图宽高
-    double mainWidth   = self.view.bounds.size.width;
-    double mainHeight  = self.view.bounds.size.height;
+    mainWidth   = self.view.bounds.size.width;
+    mainHeight  = self.view.bounds.size.height;
     
     //web视图
-    _webView = [[WebView alloc] initWithFrame:CGRectMake(15, 10, (mainWidth - 20)/2, (mainHeight - 40))];
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(15, 10, (mainWidth - 20)/2, (mainHeight - 40))];
+    _webView.UIDelegate = self;
+    _webView.navigationDelegate = self;
     [self.view addSubview:_webView];
     
     //邮箱显示视图
@@ -55,6 +58,7 @@
     [_goButton setAction:@selector(goAction)];
     [self.view addSubview:_goButton];
     
+    urlDictionary = [NSMutableDictionary dictionary];
 }
 
 
@@ -65,30 +69,14 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
     [request setTimeoutInterval:60];
-    [_webView.mainFrame loadRequest:request];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (error == nil) {
-            
-            if (data) {
-        
-                [self emailData:data];
-               
-            }
-            
-        }
-        
-    }];
-
-    [task resume];
-   
+    [urlDictionary removeAllObjects];
+    [_webView loadRequest:request];
 }
 
 
 //提取email并显示出来
 - (void)emailData:(NSData *)data{
-
+    
     NSMutableString *emailText = [NSMutableString string];
     NSMutableArray *emailArray = [NSMutableArray array];
     NSMutableString *stringData = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -118,12 +106,13 @@
     });
 }
 
+
 //viewframe改变时执行
 - (void)notificationViewChanged
 {
     //本视图宽高
-    double mainWidth   = self.view.frame.size.width;
-    double mainHeight  = self.view.frame.size.height;
+    mainWidth   = self.view.frame.size.width;
+    mainHeight  = self.view.frame.size.height;
     
     
     //web视图
@@ -166,12 +155,178 @@
 
 }
 
+
 //windows关闭时退出应用
 - (void)notificationWindoCloss{
 
     exit(0);
 
 }
+
+#pragma mark -WKNavigationDelegate
+
+//页面开始加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+    
+    NSLog(@"页面开始加载");
+    
+    
+}
+
+//页面开始返回时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    
+    
+    NSLog(@"页面开始返回");
+    
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@",webView.URL];
+    
+
+    if (![self searchAllKeys:[urlDictionary allKeys] isIncludeKey:urlString]) {
+        
+        [_textField setStringValue:[NSString stringWithFormat:@"%@",webView.URL]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:webView.URL];
+        [request setHTTPMethod:@"GET"];
+        [request setTimeoutInterval:60];
+        
+        [_webView loadRequest:request];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            if (error == nil) {
+                
+                if (data) {
+                    
+                    [self emailData:data];
+                    
+                }
+                
+            }
+            
+        }];
+        
+        [task resume];
+    }
+    
+    [urlDictionary setObject:urlString
+                      forKey:urlString];
+    
+
+    
+}
+
+//判断字典中是否存在某个key
+- (BOOL)searchAllKeys:(NSArray *)array isIncludeKey:(NSString *)key{
+
+
+    for (NSString *string in array) {
+        
+        if ([string isEqualToString:key]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+
+}
+
+
+//页面加载完成之后调用
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    
+    
+    NSLog(@"页面加载完成 --- %@",navigation);
+    
+}
+
+//页面加载失败时调用
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    
+    NSLog(@"页面加载失败");
+    
+}
+
+
+//链接到服务器跳转请求后调用
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+    
+    NSLog(@"----%@",navigation);
+    
+}
+
+
+//收到响应后决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    
+    NSLog(@"%@----- %ld",navigationAction.request.URL.absoluteString,(long)navigationAction.navigationType);
+
+    //允许跳转
+    decisionHandler(WKNavigationActionPolicyAllow);
+
+    switch (navigationAction.navigationType) {
+        case WKNavigationTypeLinkActivated:{
+        
+            if (![self searchAllKeys:[urlDictionary allKeys] isIncludeKey:navigationAction.request.URL.absoluteString]) {
+                
+                [_webView loadRequest:navigationAction.request];
+            }
+            [urlDictionary setObject:navigationAction.request.URL.absoluteString forKey:navigationAction.request.URL.absoluteString];
+            
+            
+        
+            break;
+        }
+        case WKNavigationTypeOther:{
+        
+            
+            break;
+        }
+            
+        default:{
+        
+        
+            break;
+        }
+    }
+    
+    //不允许跳转
+    //    decisionHandler(WKNavigationActionPolicyCancel);
+    
+    
+}
+
+
+#pragma mark -WKUIDelegate
+
+//创建一个新的webView
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+    
+    return nil;
+    
+}
+
+//输入框
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler{
+    
+    
+    
+}
+
+//确认框
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler{
+    
+    
+}
+
+//警告框
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    
+    
+}
+
+
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];

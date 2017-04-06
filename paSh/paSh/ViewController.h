@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-@interface ViewController : NSViewController<NSURLSessionTaskDelegate,NSURLSessionDelegate,NSURLSessionDataDelegate>
+@interface ViewController : NSViewController<NSURLSessionTaskDelegate,NSURLSessionDelegate,NSURLSessionDataDelegate,WKUIDelegate,WKNavigationDelegate>
 
 @property (nonatomic,retain)NSTextField* textField;
-@property (nonatomic,retain)WebView *webView;
+@property (nonatomic,retain)WKWebView *webView;
 @property (nonatomic,retain)NSTextView *textView;
 @property (nonatomic,retain)NSButton *goButton;
 
