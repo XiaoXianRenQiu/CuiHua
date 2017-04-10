@@ -18,6 +18,12 @@
 		2B8FC8091E6656250046597A /* biaoPan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B8FC8081E6656250046597A /* biaoPan.png */; };
 		2B8FC80C1E665A5E0046597A /* PanThermometerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FC80B1E665A5E0046597A /* PanThermometerView.m */; };
 		2B8FC80F1E6665350046597A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8FC80E1E6665350046597A /* QuartzCore.framework */; };
+		2BC2BE301E88F69E00F8F30C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC2BE2F1E88F69E00F8F30C /* NotificationCenter.framework */; };
+		2BC2BE341E88F69E00F8F30C /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2BE331E88F69E00F8F30C /* TodayViewController.m */; };
+		2BC2BE371E88F69E00F8F30C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BE351E88F69E00F8F30C /* MainInterface.storyboard */; };
+		2BC2BE3B1E88F69E00F8F30C /* WidGet.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2BC2BE2E1E88F69E00F8F30C /* WidGet.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2BC2BE401E88F75500F8F30C /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2BE331E88F69E00F8F30C /* TodayViewController.m */; };
+		2BC2BE411E88F76D00F8F30C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BE351E88F69E00F8F30C /* MainInterface.storyboard */; };
 		2BD0161C1E78DF58006A28A7 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0161B1E78DF58006A28A7 /* 2.jpg */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +42,28 @@
 			remoteGlobalIDString = 2B8FC7D11E6656020046597A;
 			remoteInfo = BiaoPan;
 		};
+		2BC2BE391E88F69E00F8F30C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B8FC7CA1E6656020046597A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BC2BE2D1E88F69E00F8F30C;
+			remoteInfo = WidGet;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2BC2BE3F1E88F69E00F8F30C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2BC2BE3B1E88F69E00F8F30C /* WidGet.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B8FC7D21E6656020046597A /* BiaoPan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiaoPan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +86,12 @@
 		2B8FC80A1E665A5E0046597A /* PanThermometerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanThermometerView.h; sourceTree = "<group>"; };
 		2B8FC80B1E665A5E0046597A /* PanThermometerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanThermometerView.m; sourceTree = "<group>"; };
 		2B8FC80E1E6665350046597A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2BC2BE2E1E88F69E00F8F30C /* WidGet.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidGet.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BC2BE2F1E88F69E00F8F30C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2BC2BE321E88F69E00F8F30C /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		2BC2BE331E88F69E00F8F30C /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		2BC2BE361E88F69E00F8F30C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2BC2BE381E88F69E00F8F30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BD0161B1E78DF58006A28A7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +118,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BC2BE2B1E88F69E00F8F30C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC2BE301E88F69E00F8F30C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,6 +135,7 @@
 				2B8FC7D41E6656020046597A /* BiaoPan */,
 				2B8FC7EE1E6656030046597A /* BiaoPanTests */,
 				2B8FC7F91E6656030046597A /* BiaoPanUITests */,
+				2BC2BE311E88F69E00F8F30C /* WidGet */,
 				2B8FC7D31E6656020046597A /* Products */,
 				2B8FC80D1E6665350046597A /* Frameworks */,
 			);
@@ -105,6 +147,7 @@
 				2B8FC7D21E6656020046597A /* BiaoPan.app */,
 				2B8FC7EB1E6656030046597A /* BiaoPanTests.xctest */,
 				2B8FC7F61E6656030046597A /* BiaoPanUITests.xctest */,
+				2BC2BE2E1E88F69E00F8F30C /* WidGet.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,8 +202,20 @@
 			isa = PBXGroup;
 			children = (
 				2B8FC80E1E6665350046597A /* QuartzCore.framework */,
+				2BC2BE2F1E88F69E00F8F30C /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BC2BE311E88F69E00F8F30C /* WidGet */ = {
+			isa = PBXGroup;
+			children = (
+				2BC2BE321E88F69E00F8F30C /* TodayViewController.h */,
+				2BC2BE331E88F69E00F8F30C /* TodayViewController.m */,
+				2BC2BE351E88F69E00F8F30C /* MainInterface.storyboard */,
+				2BC2BE381E88F69E00F8F30C /* Info.plist */,
+			);
+			path = WidGet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,10 +228,12 @@
 				2B8FC7CE1E6656020046597A /* Sources */,
 				2B8FC7CF1E6656020046597A /* Frameworks */,
 				2B8FC7D01E6656020046597A /* Resources */,
+				2BC2BE3F1E88F69E00F8F30C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2BC2BE3A1E88F69E00F8F30C /* PBXTargetDependency */,
 			);
 			name = BiaoPan;
 			productName = BiaoPan;
@@ -219,6 +276,23 @@
 			productReference = 2B8FC7F61E6656030046597A /* BiaoPanUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2BC2BE2D1E88F69E00F8F30C /* WidGet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BC2BE3E1E88F69E00F8F30C /* Build configuration list for PBXNativeTarget "WidGet" */;
+			buildPhases = (
+				2BC2BE2A1E88F69E00F8F30C /* Sources */,
+				2BC2BE2B1E88F69E00F8F30C /* Frameworks */,
+				2BC2BE2C1E88F69E00F8F30C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidGet;
+			productName = WidGet;
+			productReference = 2BC2BE2E1E88F69E00F8F30C /* WidGet.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -245,6 +319,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2B8FC7D11E6656020046597A;
 					};
+					2BC2BE2D1E88F69E00F8F30C = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 65NLRVBA2W;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 2B8FC7CD1E6656020046597A /* Build configuration list for PBXProject "BiaoPan" */;
@@ -263,6 +342,7 @@
 				2B8FC7D11E6656020046597A /* BiaoPan */,
 				2B8FC7EA1E6656030046597A /* BiaoPanTests */,
 				2B8FC7F51E6656030046597A /* BiaoPanUITests */,
+				2BC2BE2D1E88F69E00F8F30C /* WidGet */,
 			);
 		};
 /* End PBXProject section */
@@ -273,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8FC8091E6656250046597A /* biaoPan.png in Resources */,
+				2BC2BE411E88F76D00F8F30C /* MainInterface.storyboard in Resources */,
 				2B8FC7E51E6656020046597A /* LaunchScreen.storyboard in Resources */,
 				2BD0161C1E78DF58006A28A7 /* 2.jpg in Resources */,
 				2B8FC7E21E6656020046597A /* Assets.xcassets in Resources */,
@@ -294,6 +375,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BC2BE2C1E88F69E00F8F30C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC2BE371E88F69E00F8F30C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,6 +394,7 @@
 				2B8FC80C1E665A5E0046597A /* PanThermometerView.m in Sources */,
 				2B8FC7DA1E6656020046597A /* AppDelegate.m in Sources */,
 				2B8FC7D71E6656020046597A /* main.m in Sources */,
+				2BC2BE401E88F75500F8F30C /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +414,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BC2BE2A1E88F69E00F8F30C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC2BE341E88F69E00F8F30C /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -336,6 +434,11 @@
 			isa = PBXTargetDependency;
 			target = 2B8FC7D11E6656020046597A /* BiaoPan */;
 			targetProxy = 2B8FC7F71E6656030046597A /* PBXContainerItemProxy */;
+		};
+		2BC2BE3A1E88F69E00F8F30C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BC2BE2D1E88F69E00F8F30C /* WidGet */;
+			targetProxy = 2BC2BE391E88F69E00F8F30C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -354,6 +457,14 @@
 				2B8FC7E41E6656020046597A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2BC2BE351E88F69E00F8F30C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BC2BE361E88F69E00F8F30C /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -453,6 +564,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65NLRVBA2W;
 				INFOPLIST_FILE = BiaoPan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,6 +578,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65NLRVBA2W;
 				INFOPLIST_FILE = BiaoPan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -523,6 +638,30 @@
 			};
 			name = Release;
 		};
+		2BC2BE3C1E88F69E00F8F30C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 65NLRVBA2W;
+				INFOPLIST_FILE = WidGet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pandor.BiaoPan.WidGet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2BC2BE3D1E88F69E00F8F30C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 65NLRVBA2W;
+				INFOPLIST_FILE = WidGet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pandor.BiaoPan.WidGet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -561,6 +700,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2BC2BE3E1E88F69E00F8F30C /* Build configuration list for PBXNativeTarget "WidGet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC2BE3C1E88F69E00F8F30C /* Debug */,
+				2BC2BE3D1E88F69E00F8F30C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
