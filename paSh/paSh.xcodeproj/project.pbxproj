@@ -50,8 +50,8 @@
 		2B854CCC1BBA2D2E00DE68A8 /* paShUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paShUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B854CD01BBA2D2E00DE68A8 /* paShUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = paShUITests.m; sourceTree = "<group>"; };
 		2B854CD21BBA2D2E00DE68A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B854CDE1BBA2E6C00DE68A8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2B99C52F1BBBD402008112BE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2BFBE4E91E971EC700872B6A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 				2B854CB91BBA2D2E00DE68A8 /* Main.storyboard */,
 				2B854CBC1BBA2D2E00DE68A8 /* Info.plist */,
 				2B854CB11BBA2D2E00DE68A8 /* Supporting Files */,
-				2B854CDE1BBA2E6C00DE68A8 /* PrefixHeader.pch */,
+				2BFBE4E91E971EC700872B6A /* PrefixHeader.pch */,
 			);
 			path = paSh;
 			sourceTree = "<group>";
@@ -409,6 +409,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 65NLRVBA2W;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/paSh/PrefixHeader.pch";
 				INFOPLIST_FILE = paSh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -427,6 +428,7 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 65NLRVBA2W;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/paSh/PrefixHeader.pch";
 				INFOPLIST_FILE = paSh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;

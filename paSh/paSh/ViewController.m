@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+
+
 @implementation ViewController{
 
     NSMutableString *dataString;//邮箱字符串
@@ -70,6 +72,7 @@
     [request setHTTPMethod:@"GET"];
     [request setTimeoutInterval:60];
     [urlDictionary removeAllObjects];
+    dataString = [NSMutableString string];
     [_webView loadRequest:request];
 }
 
@@ -79,7 +82,18 @@
     
     NSMutableString *emailText = [NSMutableString string];
     NSMutableArray *emailArray = [NSMutableArray array];
-    NSMutableString *stringData = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSMutableString *stringData = nil;
+    @try {
+        stringData = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+    if (!stringData) {
+        return;
+    }
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Z0-9a-z%+]+@[A-Za-z0-9]+\\.[A-Za-z]{2,4}" options:NSRegularExpressionCaseInsensitive error:nil];
     NSArray *rangeArray = [regex matchesInString:stringData options:0 range:NSMakeRange(0, [stringData length])];
     for (NSTextCheckingResult *textResult in rangeArray) {
@@ -101,8 +115,9 @@
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        dataString = emailText;
-        [_textView setString:(NSString *)emailText];
+//        dataString = emailText;
+        [dataString appendString:emailText];
+        [_textView setString:(NSString *)dataString];
     });
 }
 
@@ -203,6 +218,10 @@
                     
                 }
                 
+            }else{
+            
+                NSLog(@"抓去数据失败!!!!!!!!! %@",error);
+            
             }
             
         }];
@@ -244,7 +263,7 @@
 //页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     
-    NSLog(@"页面加载失败");
+    NSLog(@"页面加载失败!!!!!!!! %@",error);
     
 }
 
@@ -271,9 +290,8 @@
             if (![self searchAllKeys:[urlDictionary allKeys] isIncludeKey:navigationAction.request.URL.absoluteString]) {
                 
                 [_webView loadRequest:navigationAction.request];
+                dataString = [NSMutableString string];
             }
-            [urlDictionary setObject:navigationAction.request.URL.absoluteString forKey:navigationAction.request.URL.absoluteString];
-            
             
         
             break;
@@ -293,35 +311,6 @@
     
     //不允许跳转
     //    decisionHandler(WKNavigationActionPolicyCancel);
-    
-    
-}
-
-
-#pragma mark -WKUIDelegate
-
-//创建一个新的webView
-- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
-    
-    return nil;
-    
-}
-
-//输入框
-- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable))completionHandler{
-    
-    
-    
-}
-
-//确认框
-- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler{
-    
-    
-}
-
-//警告框
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
     
     
 }
